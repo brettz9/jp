@@ -1,0 +1,4 @@
+jp
+==
+
+Simple JSONP function
