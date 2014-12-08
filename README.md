@@ -8,6 +8,12 @@ JSONP(url, function (data) {
 });
 ```
 
+# Installation
+
+```
+bower install jp
+```
+
 # Credits
 
 - Original code from [WebReflection](http://webreflection.blogspot.com/2011/02/all-you-need-for-jsonp.html).
