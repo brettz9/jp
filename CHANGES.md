@@ -1,3 +1,13 @@
+# 0.3.1
+
+-   Throw if `JSONP.executeCallback` is supplied as the name for `JSONP.executeCallback`
+-   Properly include 0.3.1 in tag
+
+# 0.3.0
+
+-   Enhancement: `JSONP.findParentAndChildOfMethod` and `JSONP.executeCallback` utilities, esp. for use by JSONP documents
+-   Refactoring: Better var. naming
+
 # 0.2.1
 
 -   Fix: Avoid accidental assignment of options

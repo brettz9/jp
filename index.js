@@ -100,7 +100,10 @@ JSONP.findParentAndChildOfMethod = function (callbackName, baseObject = global) 
 };
 
 JSONP.executeCallback = function (obj, {callbackParam, baseObject} = {callbackParam: 'callback'}) {
-    const callbackName = new URL(document.location).searchParams.get(callbackParam);
+    const callbackName = new URL(document.location).searchParams.get(callbackParam) || '';
+    if (callbackName.trim() === 'JSONP.executeCallback') {
+        throw new TypeError('JSONP.executeCallback cannot be supplied itself');
+    }
     const [parent, child] = JSONP.findParentAndChildOfMethod(callbackName, baseObject);
     return parent[child](obj);
 };
