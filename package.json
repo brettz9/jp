@@ -1,0 +1,25 @@
+{
+  "name": "jsonpadding",
+  "version": "0.2.0",
+  "description": "Convenient ES6 Promise-based JSONP wrapper",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brettz9/jp.git"
+  },
+  "keywords": [
+    "jsonp"
+  ],
+  "author": "Brett Zamir",
+  "contributors": [],
+  "license": "MIT",
+  "dependencies": {},
+  "engines": {},
+  "bugs": {
+    "url": "https://github.com/brettz9/jp/issues"
+  },
+  "homepage": "https://github.com/brettz9/jp#readme"
+}
