@@ -19,7 +19,7 @@ let id = 0;
 function JSONP (uri, options = {}, params, callback) {
     if (Array.isArray(uri)) {
         return Promise.all(
-            uri.map((u) => JSONP(u, options = {}, params, callback))
+            uri.map((u) => JSONP(u, options, params, callback))
         );
     }
     if (typeof params === 'function') {

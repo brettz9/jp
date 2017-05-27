@@ -1,9 +1,10 @@
 {
   "name": "jsonpadding",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Convenient ES6 Promise-based JSONP wrapper",
   "main": "index.js",
   "scripts": {
+    "eslint": "eslint index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,6 +18,17 @@
   "contributors": [],
   "license": "MIT",
   "dependencies": {},
+  "devDependencies": {
+      "eslint": "3.19.0",
+      "eslint-config-standard": "10.2.1",
+      "eslint-plugin-compat": "1.0.2",
+      "eslint-plugin-import": "2.2.0",
+      "eslint-plugin-node": "4.2.2",
+      "eslint-plugin-promise": "3.5.0",
+      "eslint-plugin-standard": "3.0.1",
+      "nodeunit": "0.11.0",
+      "remark-lint": "6.0.0"
+  },
   "engines": {},
   "bugs": {
     "url": "https://github.com/brettz9/jp/issues"
