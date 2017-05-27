@@ -7,12 +7,11 @@ const prefix = '__JSONP__';
 const document = global.document;
 
 function getQuery (baseUrl = '', params = {}, callbackName, callbackVal) {
-    let query = baseUrl.includes('?') ? '?' : '&';
+    let query = baseUrl.includes('?') ? '&' : '?';
     Object.entries(params).forEach(([key, param]) => {
         query += encodeURIComponent(key) + '=' + encodeURIComponent(param) + '&';
     });
-
-    return baseUrl + query + callbackName ? (callbackName + '=' + callbackVal) : '';
+    return baseUrl + query + (callbackName ? callbackName + '=' + callbackVal : '');
 }
 
 let id = 0;
@@ -34,7 +33,7 @@ function JSONP (uri, options = {}, params, callback) {
 
     const {
         appendTo,
-        attrs,
+        attrs = {},
         callbackName = ns + '.' + prefix + id++,
         callbackParam = 'callback',
         callbackParent,
@@ -100,7 +99,8 @@ JSONP.findParentAndChildOfMethod = function (callbackName, baseObject = global) 
 };
 
 JSONP.executeCallback = function (obj, {callbackParam, baseObject} = {callbackParam: 'callback'}) {
-    const callbackName = new URL(document.location).searchParams.get(callbackParam) || '';
+    const callbackName = new URL(Array.from(document.querySelectorAll('script[src]')).pop().src)
+        .searchParams.get(callbackParam) || '';
     if (callbackName.trim() === 'JSONP.executeCallback') {
         throw new TypeError('JSONP.executeCallback cannot be supplied itself');
     }

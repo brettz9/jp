@@ -1,3 +1,7 @@
+# 0.3.2
+
+-   Critical fixes for callback URL construction, `JSONP.executeCallback` and `attrs` default
+
 # 0.3.1
 
 -   Throw if `JSONP.executeCallback` is supplied as the name for `JSONP.executeCallback`
