@@ -11,6 +11,7 @@ Light JSONP wrapper for Node and the browser.
 -   Avoids need for manually specifying conventional `[?&]callback=` in JSONP URLs though also allows manual specification of the name (e.g., for when the JSONP script does not accept a dynamic `callback` parameter) optionally resolved to a parent object and optionally renaming the parameter name itself from the conventional `"callback"` parameter name.
 -   Allows specifying a map of parameters to encode.
 -   Allows fine-tuned tweaking of the placement, attributes, and removal of the generated `script` tag and auto-generated callbacks.
+-   Provides facility for use in JSONP documents to retrieve the supplied callback name dynamically without server-side substitutions.
 -   Allows specification of `timeout` limits to cause a Promise rejection upon unsuccessful expirations as well as an `errorHandler` to override the default passing of a generic error object to Promise rejections.
 
 ## Full signature
@@ -65,6 +66,40 @@ The most likely options for the user to desire any alteration are `errorHandler`
 -   `removeCallBack` - Boolean on whether to remove any auto-generated callbacks. Defaults to `true`.
 -   `removeScript` - Boolean on whether to remove the script tag when executed. Defaults to `true`.
 -   `timeout` - If a number is given, the time after which to err. Defaults to `false`
+
+## Utility methods
+
+The following utilities could be useful in JSONP documents wishing to retrieve the URL-supplied callback name dynamically.
+
+### JSONP.executeCallback
+
+This method will execute a callback dictated by the URL parameter whose name is indicated by `callbackParam`, which is supplied in an optional options object as the second argument (and which defaults to `"callback"`). The URL parameter value should be a dot-separated path relative to `baseObject` or the global object if none is supplied.
+
+```js
+JSONP.executeCallback(obj, {baseObject, callbackParam} = {callbackParam: 'callback'});
+```
+
+So if the URL were `http://example.com/?callback=someClass.someMethod`, then the following:
+
+```js
+JSONP.executeCallback({test: "Hello"});
+```
+
+would be equivalent to:
+
+```js
+someClass.someMethod({test: "Hello"});
+```
+
+### JSONP.findParentAndChildOfMethod
+
+This utility is used internally by `JSONP` and `JSONP.executeCallback`. It accepts a dot-separated string as a `callbackName` path and an optional `baseObject` and retrieves the immediate parent of the callback as the first item in the returned array and the string name of the child method as the second.
+
+```js
+const [parent, child] = JSONP.findParentAndChildOfMethod(callbackName [, baseObject]);
+parent[child]();
+```
+
 
 ## Installation
 

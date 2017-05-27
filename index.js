@@ -69,16 +69,14 @@ function JSONP (uri, options = {}, params, callback) {
         });
 
         if (callbackName) { // If falsy value given, JSONP script is expected to call an existing function
-            const props = callbackName.split('.');
-            const lastProp = props.pop();
-            const parent = props.reduce((par, prop) => par[prop], callbackParent || global);
+            const [parent, methodName] = JSONP.findParentAndChildOfMethod(callbackName, callbackParent);
 
             const JSONPResponse = (resp) => {
                 if (removeCallBack) {
                     try {
-                        delete parent[lastProp];
+                        delete parent[methodName];
                     } catch (e) {
-                        parent[lastProp] = null;
+                        parent[methodName] = null;
                     }
                 }
                 if (removeScript) where.removeChild(script);
@@ -87,12 +85,26 @@ function JSONP (uri, options = {}, params, callback) {
                 if (callback) callback(resp, resolve, reject);
                 else resolve(resp);
             };
-            parent[lastProp] = JSONPResponse;
+            parent[methodName] = JSONPResponse;
         }
 
         where.appendChild(script).src = getQuery(uri, params, callbackParam, callbackName);
     });
 }
+
+JSONP.findParentAndChildOfMethod = function (callbackName, baseObject = global) {
+    const props = callbackName.split('.');
+    const methodName = props.pop();
+    const parent = props.reduce((par, prop) => par[prop], baseObject);
+    return [parent, methodName];
+};
+
+JSONP.executeCallback = function (obj, {callbackParam, baseObject} = {callbackParam: 'callback'}) {
+    const callbackName = new URL(document.location).searchParams.get(callbackParam);
+    const [parent, child] = JSONP.findParentAndChildOfMethod(callbackName, baseObject);
+    return parent[child](obj);
+};
+
 if (typeof module !== 'undefined') {
     module.exports = JSONP;
 } else {
