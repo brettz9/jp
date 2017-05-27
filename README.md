@@ -73,13 +73,13 @@ The following utilities could be useful in JSONP documents wishing to retrieve t
 
 ### JSONP.executeCallback
 
-This method will execute a callback dictated by the URL parameter whose name is indicated by `callbackParam`, which is supplied in an optional options object as the second argument (and which defaults to `"callback"`). The URL parameter value should be a dot-separated path relative to `baseObject` or the global object if none is supplied.
+This method will execute a callback dictated by the URL parameter of the currently running script whose name is indicated by `callbackParam`, which is supplied in an optional options object as the second argument (and which defaults to `"callback"`). The URL parameter value should be a dot-separated path relative to `baseObject` or the global object if none is supplied.
 
 ```js
 JSONP.executeCallback(obj, {baseObject, callbackParam} = {callbackParam: 'callback'});
 ```
 
-So if the URL were `http://example.com/?callback=someClass.someMethod`, then the following:
+So if the URL of the script were `http://example.com/?callback=someClass.someMethod`, then the following:
 
 ```js
 JSONP.executeCallback({test: "Hello"});
