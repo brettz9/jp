@@ -1,3 +1,8 @@
+# 0.2.1
+
+-   Fix: Avoid accidental assignment of options
+-   Linting: Add ESLint routine (and gitignore)
+
 # 0.2.0
 
 -   Breaking change: Move from bower to npm
