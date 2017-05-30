@@ -1,3 +1,8 @@
+# 0.3.3
+
+-   Critical fix for `JSONP.executeCallback` execution algorithm affecting
+    callback resolution order
+
 # 0.3.2
 
 -   Critical fixes for callback URL construction, `JSONP.executeCallback` and `attrs` default

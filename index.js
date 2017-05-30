@@ -81,15 +81,19 @@ function JSONP (uri, options = {}, params, callback) {
                 if (removeScript) where.removeChild(script);
 
                 clearTimeout(timer);
+
                 if (callback) callback(resp, resolve, reject);
                 else resolve(resp);
             };
             parent[methodName] = JSONPResponse;
         }
 
+        JSONP.srcs.push(callbackName);
         where.appendChild(script).src = getQuery(uri, params, callbackParam, callbackName);
     });
 }
+
+JSONP.srcs = [];
 
 JSONP.findParentAndChildOfMethod = function (callbackName, baseObject = global) {
     const props = callbackName.split('.');
@@ -99,8 +103,7 @@ JSONP.findParentAndChildOfMethod = function (callbackName, baseObject = global) 
 };
 
 JSONP.executeCallback = function (obj, {callbackParam, baseObject} = {callbackParam: 'callback'}) {
-    const callbackName = new URL(Array.from(document.querySelectorAll('script[src]')).pop().src)
-        .searchParams.get(callbackParam) || '';
+    const callbackName = JSONP.srcs.shift();
     if (callbackName.trim() === 'JSONP.executeCallback') {
         throw new TypeError('JSONP.executeCallback cannot be supplied itself');
     }
