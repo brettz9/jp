@@ -20,6 +20,12 @@ Light JSONP wrapper for Node and the browser.
 JSONP(urlStringOrArrayOfURLs, [options], [params], [callback]).then((result) => {});
 ```
 
+or with the first argument as an object:
+
+```js
+JSONP({url, options, params, callback}).then((result) => {});
+```
+
 One may omit any but the first argument:
 
 
@@ -102,11 +108,14 @@ const [parent, child] = JSONP.findParentAndChildOfMethod(callbackName [, baseObj
 parent[child]();
 ```
 
-
 ## Installation
 
 ```
 npm install jsonpadding
+```
+
+```js
+import JSONP from './node_modules/jsonpadding/index.js';
 ```
 
 ## Credits
@@ -114,3 +123,8 @@ npm install jsonpadding
 -   Original code adapted from [WebReflection](http://webreflection.blogspot.com/2011/02/all-you-need-for-jsonp.html)
 -   Subsequent inspiration from [simple-load-script](https://github.com/tomek-f/simple-load-script)
     and [jsonp-es6](https://github.com/franzose/jsonp-es6)
+
+## To-dos
+
+1. Add test server script and tests
+1. Node polyfill with Node tests

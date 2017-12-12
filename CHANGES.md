@@ -1,3 +1,16 @@
+# 0.4.0
+
+- Refactoring/Enhancement: Move to ES6 Modules + Rollup/Babel
+- Enhancement: Allow `null` for avoiding options
+- Enhancement: Support single object signature
+- npm/yarn: Add `yarn.lock` and update `package-lock.json`
+- npm: Add `.npmignore`
+- npm: Add `module` and `browser`
+- npm: Add rollup script
+- License: Change `LICENSE.txt`->`LICENSE-MIT.txt`
+- Docs: Demo `import` usage
+- Todos
+
 # 0.3.3
 
 -   Critical fix for `JSONP.executeCallback` execution algorithm affecting
