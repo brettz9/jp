@@ -1,6 +1,6 @@
 {
   "name": "jsonpadding",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "description": "Convenient ES6 Promise-based JSONP wrapper",
   "main": "index.js",
   "browser": "index.js",

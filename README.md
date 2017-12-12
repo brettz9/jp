@@ -127,4 +127,4 @@ import JSONP from './node_modules/jsonpadding/index.js';
 ## To-dos
 
 1. Add test server script and tests
-1. Node polyfill with Node tests
+1. Add a Node polyfill with Node tests
