@@ -117,7 +117,7 @@ npm install jsonpadding
 ```
 
 ```js
-import JSONP from './node_modules/jsonpadding/src/index.js';
+import JSONP from './node_modules/jsonpadding/dist/index.js';
 ```
 
 ## Credits

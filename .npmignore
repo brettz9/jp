@@ -1,4 +1,5 @@
-test
+tests
+src
+build
 /*.*
 !LICENSE-MIT.txt
-!index.js

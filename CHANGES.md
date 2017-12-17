@@ -1,3 +1,17 @@
+# 0.5.0
+
+- Breaking change: Move source file to `src`, dist files to `dist`
+- Fix: Issue with `findParentAndChildOfMethod` and global default
+- Enhancement: Support Node
+- Build: Switch from Babel to Buble
+- Build: Update `yarn.lock` and `package-lock.json`
+- npm: Update dev deps
+- Docs: Fix path in `import`
+- Linting: Add `.remarkrc`
+- .gitignore: Add `build` for test build; avoid `npm-debug.log`
+- Testing: Add basic setup for testing (ought to flesh out more);
+    support Node and browser tests; add test, build, and watch scripts
+
 # 0.4.0
 
 - Refactoring/Enhancement: Move to ES6 Modules + Rollup/Babel
