@@ -2,6 +2,12 @@
 const ns = 'JSONP';
 const prefix = '__JSONP__';
 
+const isNode = typeof module !== 'undefined';
+let request;
+if (isNode) {
+    request = require('request');
+}
+
 function getQuery (baseUrl = '', params = {}, callbackName, callbackVal) {
     let query = baseUrl.includes('?') ? '&' : '?';
     Object.entries(params).forEach(([key, param]) => {
@@ -45,18 +51,23 @@ function JSONP (url, options, params, callback) {
         timeout
     } = options;
 
-    const where = appendTo
-        ? document.querySelector(appendTo)
-        : (document.body || document.head);
-    if (!where) {
+    const where = isNode
+        ? null
+        : appendTo
+            ? document.querySelector(appendTo)
+            : (document.body || document.head);
+    if (!isNode && !where) {
         throw new Error('No DOM element onto which one may append the script');
     }
 
-    const script = document.createElement('script');
-    script.async = true;
-    Object.entries(attrs).forEach(([attr, attrValue]) => {
-        script.setAttribute(attr, attrValue);
-    });
+    let script;
+    if (!isNode) {
+        script = document.createElement('script');
+        script.async = true;
+        Object.entries(attrs).forEach(([attr, attrValue]) => {
+            script.setAttribute(attr, attrValue);
+        });
+    }
 
     return new Promise((resolve, reject) => {
         let timer;
@@ -65,9 +76,11 @@ function JSONP (url, options, params, callback) {
                 reject(new Error('JSONP request timed out.'));
             }, timeout);
         }
-        script.addEventListener('error', (err) => {
-            errorHandler(err, reject);
-        });
+        if (!isNode) {
+            script.addEventListener('error', (err) => {
+                errorHandler(err, reject);
+            });
+        }
 
         if (callbackName) { // If falsy value given, JSONP script is expected to call an existing function
             const [parent, methodName] = JSONP.findParentAndChildOfMethod(callbackName, callbackParent);
@@ -80,7 +93,7 @@ function JSONP (url, options, params, callback) {
                         parent[methodName] = null;
                     }
                 }
-                if (removeScript) where.removeChild(script);
+                if (where && removeScript) where.removeChild(script);
 
                 clearTimeout(timer);
 
@@ -91,13 +104,30 @@ function JSONP (url, options, params, callback) {
         }
 
         JSONP.srcs.push(callbackName);
-        where.appendChild(script).src = getQuery(url, params, callbackParam, callbackName);
+        url = getQuery(url, params, callbackParam, callbackName);
+        if (isNode) {
+            const options = {
+                url,
+                headers: {
+                    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+                }
+            };
+            request(options, function (err, res, body) {
+                if (err) throw err;
+                else if (res.statusCode === 200) {
+                    const cb = new Function(body); // eslint-disable-line no-new-func
+                    cb();
+                }
+            });
+        } else {
+            where.appendChild(script).src = url;
+        }
     });
 }
 
 JSONP.srcs = [];
 
-JSONP.findParentAndChildOfMethod = function (callbackName, baseObject = global) {
+JSONP.findParentAndChildOfMethod = function (callbackName, baseObject = typeof window === 'undefined' ? global : window) {
     const props = callbackName.split('.');
     const methodName = props.pop();
     const parent = props.reduce((par, prop) => par[prop], baseObject);

@@ -117,7 +117,7 @@ npm install jsonpadding
 ```
 
 ```js
-import JSONP from './node_modules/jsonpadding/index-es6.js';
+import JSONP from './node_modules/jsonpadding/src/index.js';
 ```
 
 ## Credits
@@ -125,8 +125,3 @@ import JSONP from './node_modules/jsonpadding/index-es6.js';
 -   Original code adapted from [WebReflection](http://webreflection.blogspot.com/2011/02/all-you-need-for-jsonp.html)
 -   Subsequent inspiration from [simple-load-script](https://github.com/tomek-f/simple-load-script)
     and [jsonp-es6](https://github.com/franzose/jsonp-es6)
-
-## To-dos
-
-1. Add test server script and tests
-1. Add a Node polyfill with Node tests

@@ -1,13 +1,7 @@
-import babel from 'rollup-plugin-babel';
+import buble from 'rollup-plugin-buble';
 
-export default [{
-    input: 'index-es6.js',
-    output: {
-        file: 'index.js',
-        format: 'umd',
-        name: 'JSONP'
-    },
-    plugins: [
-        babel()
-    ]
-}];
+export default {
+    input: 'src/index.js',
+    plugins: [buble()],
+    output: {sourcemap: true}
+};
