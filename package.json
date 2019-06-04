@@ -1,6 +1,6 @@
 {
   "name": "jsonpadding",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Convenient ES6 Promise-based JSONP wrapper",
   "main": "dist/JSONP.umd.js",
   "browser": "dist/JSONP.umd.js",
@@ -12,7 +12,7 @@
     "start": "npm run test:watch",
     "test:watch": "nodemon --watch src --watch tests --exec 'npm test'",
     "test": "/bin/bash -c 'static -p 8085 ' & mocha build/tests-bundle.js && kill $(ps aux | grep \"static\" | grep -v \"grep\" |tr -s \" \"| cut -d \" \" -f 2)",
-    "test:browser": "npm run build && npm run pretest && opn http://127.0.0.1:8085/tests/ && static -p 8085",
+    "test:browser": "npm run build && npm run pretest && open-cli http://127.0.0.1:8085/tests/ && static -p 8085",
     "prepare": "npm run build && npm test"
   },
   "repository": {
@@ -26,28 +26,28 @@
   "contributors": [],
   "license": "MIT",
   "dependencies": {
-    "request": "^2.83.0"
+    "request": "^2.88.0"
   },
   "devDependencies": {
-    "chai": "4.1.2",
-    "eslint": "4.13.1",
-    "eslint-config-standard": "11.0.0-beta.0",
-    "eslint-plugin-compat": "2.1.0",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-node": "5.2.1",
-    "eslint-plugin-promise": "3.6.0",
-    "eslint-plugin-standard": "3.0.1",
-    "mocha": "4.0.1",
-    "node-static": "0.7.10",
-    "nodemon": "^1.11.0",
-    "opn-cli": "3.1.0",
-    "remark-lint": "6.0.1",
-    "rollup": "0.52.2",
+    "chai": "4.2.0",
+    "eslint": "5.16.0",
+    "eslint-config-standard": "12.0.0",
+    "eslint-plugin-compat": "3.1.1",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-node": "9.1.0",
+    "eslint-plugin-promise": "4.1.1",
+    "eslint-plugin-standard": "4.0.0",
+    "mocha": "6.1.4",
+    "node-static": "0.7.11",
+    "nodemon": "^1.19.1",
+    "open-cli": "^5.0.0",
+    "remark-lint": "6.0.4",
+    "rollup": "1.13.1",
     "rollup-plugin-async": "^1.2.0",
-    "rollup-plugin-buble": "^0.18.0",
-    "rollup-plugin-multi-entry": "^2.0.1",
+    "rollup-plugin-buble": "^0.19.6",
+    "rollup-plugin-multi-entry": "^2.1.0",
     "rollup-watch": "^4.3.1",
-    "source-map-support": "^0.5.0"
+    "source-map-support": "^0.5.12"
   },
   "engines": {},
   "bugs": {

@@ -24,13 +24,14 @@ function getQuery (baseUrl, params, callbackName, callbackVal) {
 
 var id = 0;
 function JSONP (url, options, params, callback) {
+    var assign;
+
     if (Array.isArray(url)) {
         return Promise.all(
             url.map(function (u) { return JSONP(u, options, params, callback); })
         );
     }
     if (arguments.length === 1 && url && typeof url === 'object') {
-        var assign;
         ((assign = url, url = assign.url, options = assign.options, params = assign.params, callback = assign.callback));
     }
     if (typeof params === 'function') {

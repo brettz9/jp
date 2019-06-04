@@ -13,12 +13,12 @@ export default {
         format: 'umd',
         file: 'build/tests-bundle.js',
         name: 'tests',
-        sourcemap: true
+        sourcemap: true,
+        globals: {
+            mocha: 'mocha',
+            chai: 'chai'
+        },
+        intro: 'if (typeof module !== "undefined") require("source-map-support").install();'
     },
-    globals: {
-        mocha: 'mocha',
-        chai: 'chai'
-    },
-    external: ['mocha', 'chai'],
-    intro: 'if (typeof module !== "undefined") require("source-map-support").install();'
+    external: ['mocha', 'chai']
 };

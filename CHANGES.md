@@ -1,4 +1,13 @@
-# 0.5.0
+# CHANGES for jp
+
+## 0.6.0
+
+- Linting: Rename `.eslintrc` to `.eslintrc.json`
+- Linting: Add `lgtm.yml`
+- npm: Update request dep, devDeps, opn-cli -> open-cli; update
+    `package-lock.json`; update Rollup API accordingly
+
+## 0.5.0
 
 - Breaking change: Move source file to `src`, dist files to `dist`
 - Fix: Issue with `findParentAndChildOfMethod` and global default
@@ -12,7 +21,7 @@
 - Testing: Add basic setup for testing (ought to flesh out more);
     support Node and browser tests; add test, build, and watch scripts
 
-# 0.4.0
+## 0.4.0
 
 - Refactoring/Enhancement: Move to ES6 Modules + Rollup/Babel
 - Enhancement: Allow `null` for avoiding options
@@ -25,31 +34,31 @@
 - Docs: Demo `import` usage
 - Todos
 
-# 0.3.3
+## 0.3.3
 
 -   Critical fix for `JSONP.executeCallback` execution algorithm affecting
     callback resolution order
 
-# 0.3.2
+## 0.3.2
 
 -   Critical fixes for callback URL construction, `JSONP.executeCallback` and `attrs` default
 
-# 0.3.1
+## 0.3.1
 
 -   Throw if `JSONP.executeCallback` is supplied as the name for `JSONP.executeCallback`
 -   Properly include 0.3.1 in tag
 
-# 0.3.0
+## 0.3.0
 
 -   Enhancement: `JSONP.findParentAndChildOfMethod` and `JSONP.executeCallback` utilities, esp. for use by JSONP documents
 -   Refactoring: Better var. naming
 
-# 0.2.1
+## 0.2.1
 
 -   Fix: Avoid accidental assignment of options
 -   Linting: Add ESLint routine (and gitignore)
 
-# 0.2.0
+## 0.2.0
 
 -   Breaking change: Move from bower to npm
 -   Breaking change: Requires ES6 (and `Object.entries`)
@@ -64,5 +73,5 @@
 -   Enhancement: Supports `removeCallback` and `removeScript` (both default to true)
 -   Enhancement: Supports `callbackName` and `callbackParent` for manually specificying function name and `callbackParam` for renaming the method; avoids adding any if `callbackName` is falsy
 
-# 0.1.0
+## 0.1.0
 -   initial commit
