@@ -1,5 +1,9 @@
 # CHANGES for jp
 
+## 0.7.0
+
+- yarn: Remove `yarn.lock`
+
 ## 0.6.0
 
 - Linting: Rename `.eslintrc` to `.eslintrc.json`

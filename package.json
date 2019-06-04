@@ -1,6 +1,6 @@
 {
   "name": "jsonpadding",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Convenient ES6 Promise-based JSONP wrapper",
   "main": "dist/JSONP.umd.js",
   "browser": "dist/JSONP.umd.js",

@@ -1,7 +1,5 @@
 # jsonpadding
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/brettz9/jp.svg)](https://greenkeeper.io/)
-
 Light JSONP wrapper for Node and the browser.
 
 ## Features
