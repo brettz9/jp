@@ -1,15 +1,11 @@
-import buble from 'rollup-plugin-buble';
+import babel from 'rollup-plugin-babel';
 import multiEntry from 'rollup-plugin-multi-entry';
 import async from 'rollup-plugin-async';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   input: 'test/**/*.test.js',
-  plugins: [async(), buble({
-    transforms: {
-      generator: false
-    }
-  }), multiEntry()],
+  plugins: [async(), babel(), multiEntry()],
   output: {
     format: 'umd',
     file: 'build/tests-bundle.js',

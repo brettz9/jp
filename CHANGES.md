@@ -2,6 +2,9 @@
 
 ## 0.8.0
 
+- Fix: Avoid race conditions (though it slows things down, it is needed
+  without a dynamic callback to be sure of execution order)
+- Build: Switch from Buble to Babel with plugin
 - Linting (ESLint): Update to and per latest ash-nazg; lint MD/HTML
 - Maintenance: Add `.editorconfig`
 - Maintenance: Add Github Action workflows

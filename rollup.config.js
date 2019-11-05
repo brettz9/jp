@@ -1,8 +1,8 @@
-import buble from 'rollup-plugin-buble';
+import babel from 'rollup-plugin-babel';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   input: 'src/index.js',
-  plugins: [buble()],
+  plugins: [babel()],
   output: {sourcemap: true}
 };

@@ -33,7 +33,9 @@
     "request": "^2.88.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.6.4",
     "@mysticatea/eslint-plugin": "^12.0.0",
+    "babel-plugin-transform-async-to-promises": "^0.8.15",
     "chai": "4.2.0",
     "eslint": "^6.6.0",
     "eslint-config-ash-nazg": "^11.2.0",
@@ -61,6 +63,7 @@
     "remark-lint": "6.0.5",
     "rollup": "1.26.3",
     "rollup-plugin-async": "^1.2.0",
+    "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-buble": "^0.19.8",
     "rollup-plugin-multi-entry": "^2.1.0",
     "source-map-support": "^0.5.16",

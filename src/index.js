@@ -18,11 +18,15 @@ function getQuery (callbackName, callbackVal, baseUrl = '', params = {}) {
 }
 
 let id = 0;
-function JSONP (url, options, params, callback) {
+async function JSONP (url, options, params, callback) {
   if (Array.isArray(url)) {
-    return Promise.all(
-      url.map((u) => JSONP(u, options, params, callback))
-    );
+    const results = [];
+    await url.reduce(async (p, u) => {
+      await p;
+      const result = await JSONP(u, options, params, callback);
+      results.push(result);
+    }, Promise.resolve());
+    return results;
   }
   if (arguments.length === 1 && url && typeof url === 'object') {
     ({url, options, params, callback} = url);
