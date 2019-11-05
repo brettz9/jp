@@ -3,3 +3,6 @@ src
 build
 /*.*
 !LICENSE-MIT.txt
+.github
+.nyc_output
+coverage

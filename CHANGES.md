@@ -1,5 +1,14 @@
 # CHANGES for jp
 
+## 0.8.0
+
+- Linting (ESLint): Update to and per latest ash-nazg; lint MD/HTML
+- Maintenance: Add `.editorconfig`
+- Maintenance: Add Github Action workflows
+- Testing: Add coverage (though not yet passing); move to fixtures/bootstrap
+- Docs: Add badges
+- npm: Update devDeps and remove unused `rollup-watch`
+
 ## 0.7.0
 
 - yarn: Remove `yarn.lock`

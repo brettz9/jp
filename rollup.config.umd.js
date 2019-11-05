@@ -1,4 +1,4 @@
-import config from './rollup.config';
+import config from './rollup.config.js';
 
 config.output.format = 'umd';
 config.output.file = 'dist/JSONP.umd.js';

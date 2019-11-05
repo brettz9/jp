@@ -1,3 +1,18 @@
+[![npm](http://img.shields.io/npm/v/jsonpadding.svg)](https://www.npmjs.com/package/jsonpadding)
+[![Dependencies](https://img.shields.io/david/brettz9/jp.svg)](https://david-dm.org/brettz9/jsonpadding)
+[![devDependencies](https://img.shields.io/david/dev/brettz9/jp.svg)](https://david-dm.org/brettz9/jp?type=dev)
+
+[![Actions Status](https://github.com/brettz9/jp/workflows/Node%20CI/badge.svg)](https://github.com/brettz9/jp/actions)
+<!--
+[![Actions Status](https://github.com/brettz9/jp/workflows/Coverage/badge.svg)](https://github.com/brettz9/jp/actions)
+-->
+
+[![Known Vulnerabilities](https://snyk.io/test/github/brettz9/jp/badge.svg)](https://snyk.io/test/github/brettz9/jp)
+[![Total Alerts](https://img.shields.io/lgtm/alerts/g/brettz9/jp.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/brettz9/jp/alerts)
+[![Code Quality: Javascript](https://img.shields.io/lgtm/grade/javascript/g/brettz9/jp.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/brettz9/jp/context:javascript)
+
+[![License](https://img.shields.io/npm/l/jsonpadding.svg)](LICENSE-MIT.txt)
+
 # jsonpadding
 
 Light JSONP wrapper for Node and the browser.
@@ -30,8 +45,8 @@ One may omit any but the first argument:
 
 
 ```js
-JSONP('//example.com/url1').then(response1 => {
-    // Do something with response1
+JSONP('//example.com/url1').then((response1) => {
+  // Do something with response1
 });
 ```
 
@@ -42,10 +57,10 @@ behavior.
 
 ```js
 JSONP([
-    '//example.com/url1',
-    '//example.com/url2'
+  '//example.com/url1',
+  '//example.com/url2'
 ]).then(([response1, response2]) => {
-    // Do something with responses
+  // Do something with responses
 });
 ```
 
@@ -53,7 +68,7 @@ One may alternatively supply a callback for the traditional callback style:
 
 ```js
 JSONP(url, function (data, resolve, reject) {
-    // Do something with "data" and optionally call resolve or reject to continue the promise chain
+  // Do something with "data" and optionally call resolve or reject to continue the promise chain
 });
 ```
 
@@ -90,13 +105,13 @@ JSONP.executeCallback(obj, {baseObject, callbackParam} = {callbackParam: 'callba
 So if the URL of the script were `http://example.com/?callback=someClass.someMethod`, then the following:
 
 ```js
-JSONP.executeCallback({test: "Hello"});
+JSONP.executeCallback({test: 'Hello'});
 ```
 
 would be equivalent to:
 
 ```js
-someClass.someMethod({test: "Hello"});
+someClass.someMethod({test: 'Hello'});
 ```
 
 ### JSONP.findParentAndChildOfMethod
@@ -104,7 +119,7 @@ someClass.someMethod({test: "Hello"});
 This utility is used internally by `JSONP` and `JSONP.executeCallback`. It accepts a dot-separated string as a `callbackName` path and an optional `baseObject` and retrieves the immediate parent of the callback as the first item in the returned array and the string name of the child method as the second.
 
 ```js
-const [parent, child] = JSONP.findParentAndChildOfMethod(callbackName [, baseObject]);
+const [parent, child] = JSONP.findParentAndChildOfMethod(callbackName /* , baseObject */);
 parent[child]();
 ```
 
@@ -123,3 +138,7 @@ import JSONP from './node_modules/jsonpadding/dist/index.js';
 -   Original code adapted from [WebReflection](http://webreflection.blogspot.com/2011/02/all-you-need-for-jsonp.html)
 -   Subsequent inspiration from [simple-load-script](https://github.com/tomek-f/simple-load-script)
     and [jsonp-es6](https://github.com/franzose/jsonp-es6)
+
+## To-dos
+
+- Full coverage
