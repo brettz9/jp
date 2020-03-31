@@ -1,5 +1,10 @@
 # CHANGES for jp
 
+## 0.9.0
+
+- Build; Update per latest Rollup
+- npm: Update `request` and devDeps
+
 ## 0.8.0
 
 - Fix: Avoid race conditions (though it slows things down, it is needed
