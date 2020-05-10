@@ -115,7 +115,8 @@
               } catch (e) {
                 parent[methodName] = null;
               }
-            }
+            } // eslint-disable-next-line unicorn/prefer-node-remove
+
 
             if (where && removeScript) where.removeChild(script);
             clearTimeout(timer);

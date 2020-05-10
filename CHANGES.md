@@ -1,5 +1,12 @@
 # CHANGES for jp
 
+## ?
+
+- npm: Use `prepublishOnly` script instead of `prepare`
+- npm: Use `babel/plugin-rollup` in place of deprecated `babel-plugin-rollup`
+    and make explicit `babelHelpers` as "bundled"
+- npm: Update devDeps
+
 ## 0.9.0
 
 - Build; Update per latest Rollup
